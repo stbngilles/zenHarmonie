@@ -4,10 +4,12 @@ import { z } from 'zod'
 import { LRUCache } from 'lru-cache'
 import Stripe from 'stripe'
 
-// Stripe server-side client — uses secret key, never exposed to browser
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-01-27.acacia' as any,
-})
+// Lazy Stripe init — évite le crash lors du build Next.js (env vars absentes)
+function getStripe() {
+    const key = process.env.STRIPE_SECRET_KEY
+    if (!key) throw new Error('STRIPE_SECRET_KEY manquante')
+    return new Stripe(key, { apiVersion: '2025-01-27.acacia' as any })
+}
 
 // Configure Rate Limiter (Max 5 bookings per IP per hour)
 const rateLimit = new LRUCache({
@@ -64,7 +66,7 @@ export async function POST(request: Request) {
         let retries = 3
         while (retries > 0) {
             try {
-                stripePaymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId)
+                stripePaymentIntent = await getStripe().paymentIntents.retrieve(paymentIntentId)
                 if (stripePaymentIntent.status === 'succeeded') {
                     break // SUCCESS
                 } else if (stripePaymentIntent.status === 'processing') {
