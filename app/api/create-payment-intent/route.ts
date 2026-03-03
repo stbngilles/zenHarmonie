@@ -38,12 +38,38 @@ export async function POST(request: Request) {
 
         const { serviceId } = parsed.data
 
-        const service = await prisma.service.findUnique({
-            where: { id: serviceId },
-        })
+        let service = null
+        if (serviceId.startsWith('mock-')) {
+            // Mock fallback to allow testing even if DB is empty
+            const mockServices: Record<string, { name: string, price: number }> = {
+                'mock-1': { name: 'Massage Anti-Migraine (30 min)', price: 40 },
+                'mock-2': { name: 'Massage Anti-Migraine (1h)', price: 70 },
+                'mock-3': { name: 'Massage Relaxant Dos (30 min)', price: 40 },
+                'mock-4': { name: 'Massage Relaxant Dos (1h)', price: 70 },
+                'mock-5': { name: 'Massage Dos – Nuque – Épaules (30 min)', price: 40 },
+                'mock-6': { name: 'Massage Dos – Nuque – Épaules (1h)', price: 70 },
+                'mock-7': { name: 'Massage Jambes Légères (30 min)', price: 40 },
+                'mock-8': { name: 'Massage Jambes Légères (1h)', price: 70 },
+                'mock-9': { name: 'Massage Corps Complet Personnalisé (1h)', price: 70 },
+                'mock-10': { name: 'Massage Corps Complet Personnalisé (1h30)', price: 100 },
+                'mock-11': { name: 'Massage Récupération Sportive (30 min)', price: 40 },
+                'mock-12': { name: 'Massage Récupération Sportive (1h)', price: 70 },
+                'mock-13': { name: 'Massage Récupération Sportive (1h30)', price: 100 },
+            }
+            const mock = mockServices[serviceId as keyof typeof mockServices]
+            if (mock) {
+                service = { id: serviceId, name: mock.name, price: mock.price }
+            }
+        }
 
         if (!service) {
-            return NextResponse.json({ error: 'Service not found' }, { status: 404 })
+            service = await prisma.service.findUnique({
+                where: { id: serviceId },
+            })
+        }
+
+        if (!service) {
+            return NextResponse.json({ error: 'Service introuvable' }, { status: 404 })
         }
 
         // Calculate 50% deposit
@@ -65,8 +91,11 @@ export async function POST(request: Request) {
             amount: depositAmount / 100 // Return amount in EUR for display
         })
 
-    } catch (error) {
-        console.error('Stripe Error:', error)
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    } catch (error: any) {
+        console.error('Payment Intent API Error:', error)
+        return NextResponse.json({
+            error: 'Erreur Serveur Interne',
+            message: error.message
+        }, { status: 500 })
     }
 }
