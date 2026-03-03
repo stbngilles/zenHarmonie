@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
+/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -14,7 +14,7 @@ node_modules
 /coverage
 
 # next.js
-.next/
+/.next/
 /out/
 
 # production
@@ -30,7 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — NE JAMAIS COMMITER LES CLÉS !
 .env*
 
 # vercel
@@ -40,4 +40,20 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# prisma generated
 /src/generated/prisma
+
+# Logs et fichiers temporaires de dev
+*.log
+*.txt
+lint-log*
+tsc-log*
+seed_output*
+push_log*
+eslint-report*
+
+# Scripts de test locaux (ne pas commiter)
+test-block.js
+test-count.ts
+check-bookings.js
+scripts/test-calendar.*

@@ -1,20 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
-  eslint: {
-    // Disable linting during build to save memory and processes on Hostinger
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    // Disable type checking during build to save memory and processes on Hostinger
-    ignoreBuildErrors: true,
-  },
-  experimental: {
-    // Limit thread usage to avoid "OS can't spawn worker thread" errors
-    workerThreads: false,
-    cpus: 1,
-  },
   async headers() {
     return [
       {

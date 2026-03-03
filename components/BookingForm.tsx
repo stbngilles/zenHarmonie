@@ -84,15 +84,7 @@ export default function BookingForm() {
                     setLoadingSlots(false)
                     return
                 }
-                const data = await res.json()
-                if (data.error) {
-                    console.error('Availability API error details:', data.error)
-                    setAvailableSlots([])
-                    setLoadingSlots(false)
-                    return
-                }
-
-                const busySlots: { start: string, end: string }[] = Array.isArray(data) ? data : []
+                const busySlots: { start: string, end: string }[] = await res.json()
 
                 const allSlots = []
                 const dayOfWeek = selectedDate!.getDay() // 0 = Sun, 1 = Mon, ...
@@ -270,8 +262,8 @@ export default function BookingForm() {
                 </div>
 
                 {loadingServices ? (
-                    <div key="loader-container" className="flex justify-center py-12">
-                        <div key="loader-spinner" className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-zen-primary"></div>
+                    <div className="flex justify-center py-12">
+                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-zen-primary"></div>
                     </div>
                 ) : (
                     <div className="space-y-6">
@@ -375,8 +367,8 @@ export default function BookingForm() {
                                     Horaires pour le {format(selectedDate, 'd MMMM yyyy', { locale: fr })}
                                 </h3>
                                 {loadingSlots ? (
-                                    <div key="slots-loader" className="flex justify-center py-8">
-                                        <div key="slots-spinner" className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-zen-primary"></div>
+                                    <div className="flex justify-center py-8">
+                                        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-zen-primary"></div>
                                     </div>
                                 ) : availableSlots.length === 0 ? (
                                     <p className="text-center text-red-500 py-8">Aucun créneau disponible ce jour-là.</p>
@@ -546,8 +538,8 @@ export default function BookingForm() {
                             />
                         </Elements>
                     ) : (
-                        <div key="payment-loader" className="flex justify-center py-12">
-                            <div key="payment-spinner" className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-zen-primary"></div>
+                        <div className="flex justify-center py-12">
+                            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-zen-primary"></div>
                         </div>
                     )}
                 </div>

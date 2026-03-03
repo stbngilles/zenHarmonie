@@ -38,12 +38,9 @@ export async function GET(request: Request) {
     const start = new Date(startParam)
     const end = new Date(endParam)
 
-    let bookings: any[] = []
-    let blockedSlots: any[] = []
-
     try {
         // ⚡ Run both DB queries in PARALLEL (not sequentially)
-        const [dbBookings, dbBlockedSlots] = await Promise.all([
+        const [bookings, blockedSlots] = await Promise.all([
             prisma.booking.findMany({
                 where: {
                     status: { in: ['CONFIRMED', 'PENDING'] },
@@ -60,13 +57,7 @@ export async function GET(request: Request) {
                 select: { start: true, end: true }
             })
         ])
-        bookings = dbBookings
-        blockedSlots = dbBlockedSlots
-    } catch (dbError) {
-        console.warn("Database connection failed in availability API, proceeding with empty slots:", dbError)
-    }
 
-    try {
         const busySlots: BusySlot[] = [
             ...bookings.map(booking => ({
                 start: booking.startDateTime.toISOString(),
