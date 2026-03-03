@@ -4,9 +4,12 @@ import prisma from '@/lib/prisma'
 import { z } from 'zod'
 import { LRUCache } from 'lru-cache'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-01-27.acacia' as any,
-})
+// Lazy Stripe init — évite le crash lors du build Next.js (env vars absentes)
+function getStripe() {
+    const key = process.env.STRIPE_SECRET_KEY
+    if (!key) throw new Error('STRIPE_SECRET_KEY manquante dans les variables d\'environnement')
+    return new Stripe(key, { apiVersion: '2025-01-27.acacia' as any })
+}
 
 // Rate limiter: max 10 payment intent creations per IP per hour
 const rateLimit = new LRUCache<string, number>({
@@ -48,7 +51,7 @@ export async function POST(request: Request) {
         // Calculate 50% deposit
         const depositAmount = Math.round((service.price * 0.50) * 100) // Amount in cents
 
-        const paymentIntent = await stripe.paymentIntents.create({
+        const paymentIntent = await getStripe().paymentIntents.create({
             amount: depositAmount,
             currency: 'eur',
             payment_method_types: ['card'], // Only accept card payments

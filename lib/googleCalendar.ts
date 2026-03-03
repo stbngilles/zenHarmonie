@@ -5,17 +5,20 @@ import { google } from 'googleapis';
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/calendar.events'];
 
-const auth = new google.auth.JWT({
-    email: process.env.GOOGLE_CLIENT_EMAIL,
-    key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-    scopes: SCOPES,
-});
-
-const calendar = google.calendar({ version: 'v3', auth });
 const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || 'primary';
 
+// Lazy init — évite le crash lors du build Next.js (env vars absentes)
+function getCalendarClient() {
+    const auth = new google.auth.JWT({
+        email: process.env.GOOGLE_CLIENT_EMAIL,
+        key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        scopes: SCOPES,
+    });
+    return google.calendar({ version: 'v3', auth });
+}
+
 export async function getBusySlots(start: Date, end: Date) {
-    const response = await calendar.freebusy.query({
+    const response = await getCalendarClient().freebusy.query({
         requestBody: {
             timeMin: start.toISOString(),
             timeMax: end.toISOString(),
@@ -51,7 +54,7 @@ export async function createCalendarEvent(booking: {
         // attendees: [{ email: booking.attendeeEmail }], // Service accounts cannot invite without Domain-Wide Delegation
     };
 
-    const response = await calendar.events.insert({
+    const response = await getCalendarClient().events.insert({
         calendarId: CALENDAR_ID,
         requestBody: event,
     });
@@ -61,7 +64,7 @@ export async function createCalendarEvent(booking: {
 
 export async function deleteCalendarEvent(eventId: string) {
     try {
-        await calendar.events.delete({
+        await getCalendarClient().events.delete({
             calendarId: CALENDAR_ID,
             eventId: eventId,
         });
@@ -74,7 +77,7 @@ export async function deleteCalendarEvent(eventId: string) {
 
 export async function findCalendarEvent(start: Date, end: Date, summary: string) {
     try {
-        const response = await calendar.events.list({
+        const response = await getCalendarClient().events.list({
             calendarId: CALENDAR_ID,
             timeMin: start.toISOString(),
             timeMax: end.toISOString(),
