@@ -2,13 +2,16 @@ import { NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 
 export async function GET() {
+    console.log("Fetching services...")
     try {
         const services = await prisma.service.findMany()
+        console.log(`Found ${services.length} services in database.`)
         if (services.length > 0) {
             return NextResponse.json(services)
         }
+        console.log("Database is empty, using fallback.")
     } catch (error) {
-        console.error("Database connection failed or empty, using mock data:", error)
+        console.error("Database connection failed, using mock data:", error)
     }
 
     // Fallback mock data if DB is empty or fails
