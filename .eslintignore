@@ -1,0 +1,4 @@
+scripts/
+prisma/*.js
+*.js
+test-count.ts

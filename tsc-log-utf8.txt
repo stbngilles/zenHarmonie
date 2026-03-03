@@ -1,0 +1,15 @@
+﻿components/Bio.tsx(1,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+components/Header.tsx(2,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+components/Hero.tsx(1,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+components/Partners.tsx(1,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+components/Services.tsx(3,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+src/app/layout.tsx(2,10): error TS2305: Module '"next/font/google"' has no exported member 'Geist'.
+src/app/layout.tsx(2,17): error TS2305: Module '"next/font/google"' has no exported member 'Geist_Mono'.
+src/app/page.tsx(1,19): error TS7016: Could not find a declaration file for module 'next/image'. 'C:/Users/gille/OneDrive/Desktop/Projets/PierreSite/web/node_modules/next/image.js' implicitly has an 'any' type.
+  If the 'next' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module 'next/image';`
+tsconfig.json(25,5): error TS5023: Unknown compiler option 'ts-node'.

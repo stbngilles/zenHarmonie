@@ -1,0 +1,49 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Service {
+  id          String    @id @default(cuid())
+  name        String
+  category    String   @default("Soins")
+  description String?
+  duration    Int       // in minutes
+  price       Float
+  bookings    Booking[]
+}
+
+model Booking {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  startDateTime   DateTime
+  endDateTime     DateTime
+  
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  
+  status          String   @default("PENDING") // PENDING, CONFIRMED, CANCELLED
+  
+  stripePaymentId String?
+  googleEventId   String?
+  
+  serviceId       String
+  service         Service  @relation(fields: [serviceId], references: [id])
+}
+
+model BlockedSlot {
+  id            String   @id @default(cuid())
+  start         DateTime
+  end           DateTime
+  reason        String?
+  googleEventId String?  // ID of the synced Google Calendar event
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+    --color-zen-primary: #1E3F35;
+    --color-zen-secondary: #D4C5A8;
+    /* Gold/Beige accent */
+    --color-zen-light: #E8F0E9;
+    --color-zen-bg: #FDFBF7;
+    /* Light Cream */
+    --color-zen-accent: #C8A97E;
+    --color-zen-text: #1A2E26;
+    /* Dark Green/Black for text */
+
+    --color-background: var(--color-zen-bg);
+    --color-foreground: var(--color-zen-text);
+
+    --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    body {
+        background-color: var(--color-zen-bg);
+        color: var(--color-zen-text);
+    }
+}

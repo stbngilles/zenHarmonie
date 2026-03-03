@@ -1,0 +1,119 @@
+﻿
+> web@0.1.0 lint
+> eslint
+
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\admin\page.tsx
+    6:42  warning  'CheckCircle' is defined but never used   @typescript-eslint/no-unused-vars
+   14:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   15:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   67:18  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  296:43  warning  'now' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\admin\blocked-slots\route.ts
+  22:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+  31:14  warning  'error' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\admin\bookings\route.ts
+   4:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+  11:14  warning  'error' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\auth\login\route.ts
+  106:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\bookings\client-cancel\route.ts
+  29:18  warning  'e' is defined but never used                        @typescript-eslint/no-unused-vars
+  48:15  warning  'updatedBooking' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\bookings\route.ts
+    9:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  199:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\create-payment-intent\route.ts
+  8:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\api\cron\sync-calendar\route.ts
+  78:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\not-found.tsx
+  20:37  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  21:37  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  31:35  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\app\reservation\cancel\page.tsx
+  20:55   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                        react/no-unescaped-entities
+  41:18   warning  'e' is defined but never used                                                                                                                          @typescript-eslint/no-unused-vars
+  53:17   error    Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  54:31   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                        react/no-unescaped-entities
+  67:51   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                        react/no-unescaped-entities
+  67:206  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`                                                                                        react/no-unescaped-entities
+  85:17   error    Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\check-bookings.js
+  1:1   error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\Bio.tsx
+   2:8    warning  'Link' is defined but never used                                 @typescript-eslint/no-unused-vars
+  16:191  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  31:70   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  31:110  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  44:37   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  50:154  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  50:166  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  50:213  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  53:40   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  53:163  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\BookingForm.tsx
+    8:77   warning  'CreditCard' is defined but never used                           @typescript-eslint/no-unused-vars
+    8:89   warning  'Loader2' is defined but never used                              @typescript-eslint/no-unused-vars
+    9:20   warning  'CardElement' is defined but never used                          @typescript-eslint/no-unused-vars
+    9:33   warning  'useStripe' is defined but never used                            @typescript-eslint/no-unused-vars
+    9:44   warning  'useElements' is defined but never used                          @typescript-eslint/no-unused-vars
+   26:11   warning  'TimeSlot' is defined but never used                             @typescript-eslint/no-unused-vars
+   54:12   warning  'bookingRef' is assigned a value but never used                  @typescript-eslint/no-unused-vars
+   54:24   warning  'setBookingRef' is assigned a value but never used               @typescript-eslint/no-unused-vars
+   55:12   warning  'loadingPayment' is assigned a value but never used              @typescript-eslint/no-unused-vars
+  165:27   warning  'text' is assigned a value but never used                        @typescript-eslint/no-unused-vars
+  199:29   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  244:25   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  506:103  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\CheckoutForm.tsx
+  55:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\Hero.tsx
+  18:101  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\Info.tsx
+   1:31  warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+  48:86  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\Partners.tsx
+  58:131  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  87:88   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\components\Services.tsx
+  153:35  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\middleware.ts
+  38:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\prisma\clear-bookings.js
+  2:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  3:18  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  4:22  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\prisma\seed.js
+  1:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\scripts\test-calendar.js
+  2:1   error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  3:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\gille\OneDrive\Desktop\Projets\PierreSite\web\scripts\test-calendar.ts
+  60:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 66 problems (42 errors, 24 warnings)
+

@@ -1,0 +1,105 @@
+﻿
+> web@0.1.0 build
+> next build
+
+node.exe : ÔÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but it 
+may not be correct.
+Au caractère Ligne:1 : 
+1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Users\gille\AppData
+\Roaming\ ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (ÔÜá Warning:    
+ Ne...not be correc    
+t.:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+ We detected multiple 
+lockfiles and selected 
+the directory of C:\Use
+rs\gille\package-lock.j
+son as the root 
+directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, 
+or consider removing 
+one of the lockfiles 
+if it's not needed.
+   See https://nextjs.o
+rg/docs/app/api-referen
+ce/config/next-config-j
+s/turbopack#root-direct
+ory for more 
+information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\gille\One
+Drive\Desktop\Projets\P
+ierreSite\web\package-l
+ock.json
+   * C:\Users\gille\One
+Drive\Desktop\Projets\P
+ierreSite\package-lock.
+json
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" 
+file convention is 
+deprecated. Please use 
+"proxy" instead. Learn 
+more: https://nextjs.or
+g/docs/messages/middlew
+are-to-proxy
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 10.2s
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/18) ...
+  Generating static pages using 15 workers (4/18) 
+  Generating static pages using 15 workers (8/18) 
+  Generating static pages using 15 workers (13/18) 
+Ô£ô Generating static pages using 15 workers (18/18) in 737.5ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /admin
+Ôö£ ãÆ /api/admin/blocked-slots
+Ôö£ ãÆ /api/admin/bookings
+Ôö£ ãÆ /api/auth/login
+Ôö£ ãÆ /api/auth/logout
+Ôö£ ãÆ /api/availability
+Ôö£ ãÆ /api/bookings
+Ôö£ ãÆ /api/bookings/cancel
+Ôö£ ãÆ /api/bookings/client-cancel
+Ôö£ ãÆ /api/create-payment-intent
+Ôö£ ãÆ /api/cron/reminders
+Ôö£ ãÆ /api/cron/sync-calendar
+Ôö£ ãÆ /api/services
+Ôö£ Ôùï /reservation
+Ôöö Ôùï /reservation/cancel
+
+
+ãÆ Proxy (Middleware)
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+
