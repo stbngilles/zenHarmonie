@@ -4,15 +4,10 @@ import { z } from 'zod'
 import { LRUCache } from 'lru-cache'
 import Stripe from 'stripe'
 
-// Stripe server-side client — uses secret key, never exposed to browser
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-01-27.acacia' as any,
-})
-
-// Configure Rate Limiter (Max 5 bookings per IP per hour)
+// Rate limiters should be global to persist across requests
 const rateLimit = new LRUCache({
-    max: 500, // Maximum number of IPs to track
-    ttl: 1000 * 60 * 60, // 1 hour time to live
+    max: 500,
+    ttl: 1000 * 60 * 60,
 })
 
 const BookingSchema = z.object({
@@ -29,6 +24,11 @@ const BookingSchema = z.object({
 const SENDER_EMAIL = 'ZenHarmonie <onboarding@resend.dev>'
 
 export async function POST(request: Request) {
+    // Initialize Stripe inside the handler to avoid build-time errors when env vars are missing
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+        apiVersion: '2025-01-27.acacia' as any,
+    })
+
     try {
         // Enforce Rate Limit based on IP
         const ip = request.headers.get('x-forwarded-for') ?? 'unknown-ip'

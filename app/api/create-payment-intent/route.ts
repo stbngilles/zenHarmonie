@@ -4,10 +4,6 @@ import prisma from '@/lib/prisma'
 import { z } from 'zod'
 import { LRUCache } from 'lru-cache'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-01-27.acacia' as any,
-})
-
 // Rate limiter: max 10 payment intent creations per IP per hour
 const rateLimit = new LRUCache<string, number>({
     max: 500,
@@ -19,6 +15,11 @@ const PaymentIntentSchema = z.object({
 })
 
 export async function POST(request: Request) {
+    // Initialize Stripe inside the handler to avoid build-time errors when env vars are missing
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+        apiVersion: '2025-01-27.acacia' as any,
+    })
+
     try {
         // Rate limiting
         const ip = request.headers.get('x-forwarded-for') ?? 'unknown-ip'
